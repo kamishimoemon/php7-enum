@@ -15,16 +15,16 @@ Both follow a common interface: `Enumeration`.
 
 ## ✨ Features
 
-🚧 Unique instances
-🚧 Strict finite set of values
-🚧 Identity-safe comparisons
-🚧 Custom data and methods per case
-🚧 `values()` and `valueOf()` support
-🚧 String casting
-🚧 Optional per-instance behavior
-🚧 Extendable enum definitions
-🚧 Immutable by design
-🚧 Identifiers like `Domain.Color.RED`
+🚧 Unique instances  
+🚧 Strict finite set of values  
+🚧 Identity-safe comparisons  
+🚧 Custom data and methods per case  
+🚧 `values()` and `valueOf()` support  
+🚧 String casting  
+🚧 Optional per-instance behavior  
+🚧 Extendable enum definitions  
+🚧 Immutable by design  
+🚧 Identifiers like `Domain.Color.RED` 
 
 ---
 
