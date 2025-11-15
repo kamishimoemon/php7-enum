@@ -48,7 +48,7 @@ final class Color implements Enumeration
 
 	public function id (): string
 	{
-		throw new \RuntimeException("Method not implemented yet.");
+		return str_replace('\\', '.', static::class) . '.' . $this->name;
 	}
 
 	public function name (): string

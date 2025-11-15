@@ -24,7 +24,7 @@ Both follow a common interface: `Enumeration`.
 🚧 Optional per-instance behavior  
 🚧 Extendable enum definitions  
 🚧 Immutable by design  
-🚧 Identifiers like `Domain.Color.RED` 
+✅ Identifiers like `Domain.Color.RED` 
 
 ---
 
