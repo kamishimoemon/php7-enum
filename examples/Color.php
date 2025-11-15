@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace PHP\Examples;
 
 use PHP\Enumeration;
+use PHP\EnumValue;
 
-final class Color implements Enumeration
+abstract class Color implements Enumeration
 {
 	private static array $instances = [];
 
@@ -34,7 +35,10 @@ final class Color implements Enumeration
 	 */
 	public static function RED (): self
 	{
-		return self::$instances['RED'] ??= new self('RED', '#FF0000');
+		return self::$instances['RED'] ??= new class('RED', '#FF0000') extends Color {
+			use EnumValue;
+			public function isWarm (): bool { return true; }
+		};
 	}
 
 	/**
@@ -42,13 +46,13 @@ final class Color implements Enumeration
 	 */
 	public static function BLUE (): self
 	{
-		return self::$instances['BLUE'] ??= new self('BLUE', '#0000FF');
+		return self::$instances['BLUE'] ??= new Blue();
 	}
 
 	private string $name;
 	private string $hex;
 
-	private function __construct (string $name, string $hex)
+	protected function __construct (string $name, string $hex)
 	{
 		$this->name = $name;
 		$this->hex = $hex;
@@ -68,6 +72,8 @@ final class Color implements Enumeration
 	{
 		return $this->hex;
 	}
+
+	public abstract function isWarm (): bool;
 
 	public function equals (Enumeration $other): bool
 	{
@@ -92,5 +98,20 @@ final class Color implements Enumeration
 	public function __serialize (): array
 	{
 		throw new \LogicException('Serialization of enum instances is not allowed.');
+	}
+}
+
+final class Blue extends Color
+{
+	use EnumValue;
+
+	protected function __construct ()
+	{
+		parent::__construct('BLUE', '#0000FF');
+	}
+
+	public function isWarm (): bool
+	{
+		return false;
 	}
 }

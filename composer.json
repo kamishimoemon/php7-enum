@@ -27,7 +27,7 @@
 		}
 	},
 	"scripts": {
-		"test": "phpunit test --colors=always"
+		"test": "phpunit test --colors=always --testdox"
 	},
 	"minimum-stability": "stable"
 }

@@ -5,13 +5,24 @@ declare(strict_types=1);
 namespace PHP\Test;
 
 use PHPUnit\Framework\TestCase;
+use PHP\Enumeration;
 use PHP\Examples\Color;
 
 final class IdentifierTest extends TestCase
 {
-	public function test_should_return_fully_qualified_id (): void
+	/**
+	 * @dataProvider idProvider
+	 */
+	public function test_should_return_fully_qualified_id (string $id, Enumeration $value): void
 	{
-		$this->assertSame('PHP.Examples.Color.RED', Color::RED()->id());
-		$this->assertSame('PHP.Examples.Color.BLUE', Color::BLUE()->id());
+		$this->assertSame($id, $value->id());
+	}
+
+	public function idProvider (): array
+	{
+		return [
+			'red'  => ['PHP.Examples.Color.RED',  Color::RED()],
+			'blue' => ['PHP.Examples.Color.BLUE', Color::BLUE()],
+		];
 	}
 }
