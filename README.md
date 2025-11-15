@@ -15,7 +15,7 @@ Both follow a common interface: `Enumeration`.
 
 ## ✨ Features
 
-🚧 Unique instances  
+✅ Unique instances  
 🚧 Strict finite set of values  
 🚧 Identity-safe comparisons  
 🚧 Custom data and methods per case  
