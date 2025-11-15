@@ -14,7 +14,8 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"PHP\\": "src/"
+			"PHP\\": "src/",
+			"PHP\\Examples\\": "examples/"
 		}
 	},
 	"require-dev": {
@@ -26,7 +27,7 @@
 		}
 	},
 	"scripts": {
-		"test": "phpunit"
+		"test": "phpunit test --colors=always"
 	},
 	"minimum-stability": "stable"
 }
