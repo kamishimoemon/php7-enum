@@ -12,12 +12,20 @@ final class Color implements Enumeration
 
 	public static function values (): array
 	{
-		throw new \RuntimeException("Method not implemented yet.");
+		return [
+			self::RED(),
+		];
 	}
 
 	public static function valueOf (string $name): self
 	{
-		throw new \RuntimeException("Method not implemented yet.");
+		foreach (self::values() as $instance) {
+			if ($instance->name === $name) {
+				return $instance;
+			}
+		}
+
+		throw new \InvalidArgumentException("No enum constant Color::{$name}");
 	}
 
 	public static function RED (): self
@@ -25,7 +33,12 @@ final class Color implements Enumeration
 		return self::$instances['RED'] ??= new self('RED');
 	}
 
-	private function __construct () {}
+	private string $name;
+
+	private function __construct (string $name)
+	{
+		$this->name = $name;
+	}
 
 	public function id (): string
 	{
