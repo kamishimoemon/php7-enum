@@ -65,4 +65,19 @@ final class Color implements Enumeration
 	{
 		return $this->name;
 	}
+
+	public final function __clone ()
+	{
+		throw new \LogicException('Cloning of enum instances is not allowed.');
+	}
+
+	public function __sleep (): array
+	{
+		throw new \LogicException('Serialization of enum instances is not allowed.');
+	}
+
+	public function __serialize (): array
+	{
+		throw new \LogicException('Serialization of enum instances is not allowed.');
+	}
 }

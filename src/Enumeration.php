@@ -59,4 +59,42 @@ interface Enumeration
 	 * @return string The string value of the enum.
 	 */
 	public function __toString (): string;
+
+	/**
+	 * Prevents cloning of enum instances.
+	 *
+	 * Implementations must override this method to explicitly forbid cloning,
+	 * typically by declaring it as `final` and throwing a LogicException.
+	 *
+	 * Enums are unique by definition and should never be duplicated.
+	 *
+	 * @throws \LogicException Always
+	 */
+	public function __clone ();
+
+	/**
+	 * Blocks legacy PHP serialization.
+	 *
+	 * Implementations must override this method to explicitly forbid
+	 * serialization via `serialize()`, typically by throwing a LogicException.
+	 *
+	 * This method is only invoked if `__serialize()` is not defined.
+	 *
+	 * @throws \LogicException Always
+	 * @return array Never returns — always throws.
+	 */
+	public function __sleep (): array;
+
+	/**
+	 * Blocks modern PHP serialization (PHP 7.4+).
+	 *
+	 * Implementations must override this method to explicitly forbid
+	 * serialization via `serialize()`, by throwing a LogicException.
+	 *
+	 * This method takes precedence over `__sleep()` if both are defined.
+	 *
+	 * @throws \LogicException Always
+	 * @return array Never returns — always throws.
+	 */
+	public function __serialize(): array;
 }

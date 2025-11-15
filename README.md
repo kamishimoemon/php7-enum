@@ -23,7 +23,7 @@ Both follow a common interface: `Enumeration`.
 ✅ String casting  
 🚧 Optional per-instance behavior  
 🚧 Extendable enum definitions  
-🚧 Immutable by design  
+✅ Immutable by design  
 ✅ Identifiers like `Domain.Color.RED` 
 
 ---
