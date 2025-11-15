@@ -63,6 +63,6 @@ final class Color implements Enumeration
 
 	public function __toString (): string
 	{
-		throw new \RuntimeException("Method not implemented yet.");
+		return $this->name;
 	}
 }

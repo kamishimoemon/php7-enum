@@ -20,7 +20,7 @@ Both follow a common interface: `Enumeration`.
 ✅ Identity-safe comparisons  
 🚧 Custom data and methods per case  
 ✅ `values()` and `valueOf()` support  
-🚧 String casting  
+✅ String casting  
 🚧 Optional per-instance behavior  
 🚧 Extendable enum definitions  
 🚧 Immutable by design  
