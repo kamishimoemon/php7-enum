@@ -29,11 +29,17 @@ final class Color implements Enumeration
 		throw new \InvalidArgumentException("No enum constant Color::{$name}");
 	}
 
+	/**
+	 * @Value
+	 */
 	public static function RED (): self
 	{
 		return self::$instances['RED'] ??= new self('RED');
 	}
 
+	/**
+	 * @Value
+	 */
 	public static function BLUE (): self
 	{
 		return self::$instances['BLUE'] ??= new self('BLUE');
