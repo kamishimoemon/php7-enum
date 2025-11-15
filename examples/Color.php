@@ -34,7 +34,7 @@ final class Color implements Enumeration
 	 */
 	public static function RED (): self
 	{
-		return self::$instances['RED'] ??= new self('RED');
+		return self::$instances['RED'] ??= new self('RED', '#FF0000');
 	}
 
 	/**
@@ -42,14 +42,16 @@ final class Color implements Enumeration
 	 */
 	public static function BLUE (): self
 	{
-		return self::$instances['BLUE'] ??= new self('BLUE');
+		return self::$instances['BLUE'] ??= new self('BLUE', '#0000FF');
 	}
 
 	private string $name;
+	private string $hex;
 
-	private function __construct (string $name)
+	private function __construct (string $name, string $hex)
 	{
 		$this->name = $name;
+		$this->hex = $hex;
 	}
 
 	public function id (): string
@@ -60,6 +62,11 @@ final class Color implements Enumeration
 	public function name (): string
 	{
 		return $this->name;
+	}
+
+	public function hex (): string
+	{
+		return $this->hex;
 	}
 
 	public function equals (Enumeration $other): bool
