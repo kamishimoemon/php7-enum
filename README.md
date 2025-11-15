@@ -16,10 +16,11 @@ Both follow a common interface: `Enumeration`.
 ## ✨ Features
 
 ✅ Unique instances  
+✅ Direct instantiation block  
 🚧 Strict finite set of values  
 🚧 Identity-safe comparisons  
 🚧 Custom data and methods per case  
-🚧 `values()` and `valueOf()` support  
+✅ `values()` and `valueOf()` support  
 🚧 String casting  
 🚧 Optional per-instance behavior  
 🚧 Extendable enum definitions  
