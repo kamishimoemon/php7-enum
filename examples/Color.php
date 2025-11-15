@@ -25,6 +25,8 @@ final class Color implements Enumeration
 		return self::$instances['RED'] ??= new self('RED');
 	}
 
+	private function __construct () {}
+
 	public function id (): string
 	{
 		throw new \RuntimeException("Method not implemented yet.");
