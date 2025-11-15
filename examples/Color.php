@@ -58,7 +58,7 @@ final class Color implements Enumeration
 
 	public function equals (Enumeration $other): bool
 	{
-		throw new \RuntimeException("Method not implemented yet.");
+		return $this === $other;
 	}
 
 	public function __toString (): string

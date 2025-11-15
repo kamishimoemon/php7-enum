@@ -18,7 +18,7 @@ Both follow a common interface: `Enumeration`.
 ✅ Unique instances  
 ✅ Direct instantiation block  
 🚧 Strict finite set of values  
-🚧 Identity-safe comparisons  
+✅ Identity-safe comparisons  
 🚧 Custom data and methods per case  
 ✅ `values()` and `valueOf()` support  
 🚧 String casting  
