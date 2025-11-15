@@ -7,7 +7,7 @@ namespace PHP\Test;
 use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
 
-final class EnumerationValuesTest extends TestCase
+final class ValuesTest extends TestCase
 {
 	public function test_should_return_all_defined_instances (): void
 	{

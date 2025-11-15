@@ -7,7 +7,7 @@ namespace PHP\Test;
 use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
 
-final class EnumerationToStringTest extends TestCase
+final class CastingToStringTest extends TestCase
 {
 	public function test_casting_to_string_should_return_name_by_default (): void
 	{

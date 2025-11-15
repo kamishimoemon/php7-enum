@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
 use ReflectionClass;
 
-final class EnumerationConstructionTest extends TestCase
+final class ConstructionTest extends TestCase
 {
 	public function test_should_not_allow_for_manual_instantiation (): void
 	{

@@ -7,7 +7,7 @@ namespace PHP\Test;
 use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
 
-final class EnumerationReturnsUniqueInstancesTest extends TestCase
+final class UniquenessTest extends TestCase
 {
 	public function test_it_returns_the_same_instance_for_the_same_value (): void
 	{

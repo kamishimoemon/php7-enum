@@ -7,7 +7,7 @@ namespace PHP\Test;
 use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
 
-final class EnumerationIdTest extends TestCase
+final class IdentifierTest extends TestCase
 {
 	public function test_should_return_fully_qualified_id (): void
 	{
