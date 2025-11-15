@@ -14,6 +14,7 @@ final class Color implements Enumeration
 	{
 		return [
 			self::RED(),
+			self::BLUE(),
 		];
 	}
 
@@ -31,6 +32,11 @@ final class Color implements Enumeration
 	public static function RED (): self
 	{
 		return self::$instances['RED'] ??= new self('RED');
+	}
+
+	public static function BLUE (): self
+	{
+		return self::$instances['BLUE'] ??= new self('BLUE');
 	}
 
 	private string $name;
