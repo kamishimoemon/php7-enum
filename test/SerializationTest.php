@@ -17,12 +17,4 @@ final class SerializationTest extends TestCase
 		$this->expectException(\LogicException::class);
 		serialize(Color::RED());
 	}
-
-	/*
-	public function test_should_throw_when_unserialized (): void
-	{
-		$this->expectException(\LogicException::class);
-		unserialize('O:18:"PHP\\\Examples\\\Color":0:{}');
-	}
-	*/
 }
