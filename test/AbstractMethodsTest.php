@@ -6,12 +6,24 @@ namespace PHP\Test;
 
 use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
+use PHP\Examples\ExtendedColor;
 
 final class AbstractMethodsTest extends TestCase
 {
-	public function test_should_define_behavior_per_instance (): void
+	/**
+	 * @dataProvider dataProvider
+	 */
+	public function test_should_define_behavior_per_instance (Color $color, bool $isWarm): void
 	{
-		$this->assertTrue(Color::RED()->isWarm());
-		$this->assertFalse(Color::BLUE()->isWarm());
+		$this->assertEquals($color->isWarm(), $isWarm);
+	}
+
+	public function dataProvider (): array
+	{
+		return [
+			'red'  => [Color::RED(), true],
+			'blue' => [Color::BLUE(), false],
+			'green' => [ExtendedColor::GREEN(), true],
+		];
 	}
 }

@@ -6,13 +6,24 @@ namespace PHP\Test;
 
 use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
-use ReflectionClass;
+use PHP\Examples\ExtendedColor;
 
 final class ConstructionTest extends TestCase
 {
-	public function test_should_not_allow_for_manual_instantiation (): void
+	/**
+	 * @dataProvider dataProvider
+	 */
+	public function test_should_not_allow_for_manual_instantiation (string $enumClass): void
 	{
 		$this->expectException(\Error::class);
-		new Color("some color");
+		new $enumClass("some name");
+	}
+
+	public function dataProvider (): array
+	{
+		return [
+			'Color'  => [Color::class],
+			'ExtendedColor' => [ExtendedColor::class],
+		];
 	}
 }

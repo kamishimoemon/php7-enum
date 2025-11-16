@@ -6,6 +6,7 @@ namespace PHP\Test;
 
 use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
+use PHP\Examples\ExtendedColor;
 
 final class CastingToStringTest extends TestCase
 {
@@ -13,5 +14,6 @@ final class CastingToStringTest extends TestCase
 	{
 		$this->assertSame('RED', (string) Color::RED());
 		$this->assertSame('BLUE', (string) Color::BLUE());
+		$this->assertSame('GREEN', (string) ExtendedColor::GREEN());
 	}
 }

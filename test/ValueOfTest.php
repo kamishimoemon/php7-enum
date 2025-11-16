@@ -5,21 +5,48 @@ declare(strict_types=1);
 namespace PHP\Test;
 
 use PHPUnit\Framework\TestCase;
+use PHP\Enumeration;
 use PHP\Examples\Color;
+use PHP\Examples\ExtendedColor;
 
 final class ValueOfTest extends TestCase
 {
-	public function test_should_return_instance_by_name (): void
+	/**
+	 * @dataProvider enumClassAndNamesProvider
+	 */
+	public function test_should_return_instance_by_name (string $enumClass, string $enumName, Enumeration $enumValue): void
 	{
-		$color = Color::valueOf("RED");
+		$instance = $enumClass::valueOf($enumName);
 
-		$this->assertSame(Color::RED(), $color, 'valueOf("RED") must return Color::RED()');
+		$this->assertSame($enumValue, $instance, "{$enumClass}::valueOf('{$enumName}') must return {$enumValue->id()}");
 	}
 
-	public function test_should_throw_if_name_does_not_exist (): void
+	public function enumClassAndNamesProvider (): array
+	{
+		return [
+			'Color::RED()'  => [Color::class, 'RED', Color::RED()],
+			'Color::BLUE()'  => [Color::class, 'BLUE', Color::BLUE()],
+			'ExtendedColor::RED()' => [ExtendedColor::class, 'RED', Color::RED()],
+			'ExtendedColor::BLUE()' => [ExtendedColor::class, 'BLUE', Color::BLUE()],
+			'ExtendedColor::GREEN()' => [ExtendedColor::class, 'GREEN', ExtendedColor::GREEN()],
+		];
+	}
+
+	/**
+	 * @dataProvider enumClassProvider
+	 */
+	public function test_should_throw_if_name_does_not_exist (string $enumClass): void
 	{
 		$this->expectException(\InvalidArgumentException::class);
 
-		Color::valueOf("NOT_A_COLOR");
+		$enumClass::valueOf("NOT_A_COLOR");
+	}
+
+	public function enumClassProvider (): array
+	{
+		return [
+			'Color'  => [Color::class],
+			'ExtendedColor' => [ExtendedColor::class],
+		];
 	}
 }

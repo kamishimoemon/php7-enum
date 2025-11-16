@@ -5,13 +5,27 @@ declare(strict_types=1);
 namespace PHP\Test;
 
 use PHPUnit\Framework\TestCase;
+use PHP\Enumeration;
 use PHP\Examples\Color;
+use PHP\Examples\ExtendedColor;
 
 final class CloningTest extends TestCase
 {
-	public function test_should_throw_when_cloned (): void
+	/**
+	 * @dataProvider dataProvider
+	 */
+	public function test_should_throw_when_cloned (Enumeration $value): void
 	{
 		$this->expectException(\LogicException::class);
-		$clone = clone Color::RED();
+		clone $value;
+	}
+
+	public function dataProvider (): array
+	{
+		return [
+			'red'  => [Color::RED()],
+			'blue' => [Color::BLUE()],
+			'green' => [ExtendedColor::GREEN()],
+		];
 	}
 }

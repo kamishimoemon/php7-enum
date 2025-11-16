@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PHP\Test;
+
+use PHPUnit\Framework\TestCase;
+use PHP\Enumeration;
+use PHP\Examples\Color;
+use PHP\Examples\ExtendedColor;
+
+final class SubclassingTest extends TestCase
+{
+	/**
+	 * @dataProvider dataProvider
+	 */
+	public function test_should_support_enum_extension (Enumeration $value, string $class): void
+	{
+		$this->assertInstanceOf($class, $value);
+	}
+
+	public function dataProvider (): array
+	{
+		return [
+			'red'  => [Color::RED(), Color::class],
+			'blue' => [Color::BLUE(), Color::class],
+			'green' => [ExtendedColor::GREEN(), ExtendedColor::class],
+		];
+	}
+}

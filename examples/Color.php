@@ -6,22 +6,28 @@ namespace PHP\Examples;
 
 use PHP\Enumeration;
 use PHP\EnumValue;
+use ReflectionClass;
+use ReflectionMethod;
 
 abstract class Color implements Enumeration
 {
-	private static array $instances = [];
+	protected static array $instances = [];
 
 	public static function values (): array
 	{
-		return [
-			self::RED(),
-			self::BLUE(),
-		];
+		$values = [];
+		foreach ((new ReflectionClass(static::class))->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_STATIC) as $method) {
+			$doc = $method->getDocComment();
+			if ($doc && strpos($doc, '@PHP\EnumValue') !== false) {
+				$values[] = $method->invoke(null);
+			}
+		}
+		return $values;
 	}
 
 	public static function valueOf (string $name): self
 	{
-		foreach (self::values() as $instance) {
+		foreach (static::values() as $instance) {
 			if ($instance->name === $name) {
 				return $instance;
 			}
@@ -31,7 +37,7 @@ abstract class Color implements Enumeration
 	}
 
 	/**
-	 * @Value
+	 * @PHP\EnumValue
 	 */
 	public static function RED (): self
 	{
@@ -42,7 +48,7 @@ abstract class Color implements Enumeration
 	}
 
 	/**
-	 * @Value
+	 * @PHP\EnumValue
 	 */
 	public static function BLUE (): self
 	{
