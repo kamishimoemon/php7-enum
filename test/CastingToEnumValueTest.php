@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace PHP\Test;
 
-use PHPUnit\Framework\TestCase;
 use PHP\Enumeration;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 
 use function PHP\enumval;
 
-final class CastingToEnumValueTest extends TestCase
+final class CastingToEnumValueTest extends DataProviderTestCase
 {
 	/**
 	 * @dataProvider dataProvider

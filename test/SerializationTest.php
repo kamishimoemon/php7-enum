@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace PHP\Test;
 
-use PHPUnit\Framework\TestCase;
 use PHP\Enumeration;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 
 use function serialize;
 
-final class SerializationTest extends TestCase
+final class SerializationTest extends DataProviderTestCase
 {
 	/**
 	 * @dataProvider dataProvider

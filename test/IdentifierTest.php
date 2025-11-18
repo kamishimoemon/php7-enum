@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace PHP\Test;
 
-use PHPUnit\Framework\TestCase;
 use PHP\Enumeration;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 
-final class IdentifierTest extends TestCase
+final class IdentifierTest extends DataProviderTestCase
 {
 	/**
 	 * @dataProvider idProvider

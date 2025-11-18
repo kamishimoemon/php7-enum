@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace PHP\Test;
 
-use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 
-final class EqualityTest extends TestCase
+final class EqualityTest extends DataProviderTestCase
 {
 	public function test_should_return_true_for_same_instance (): void
 	{

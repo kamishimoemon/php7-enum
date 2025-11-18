@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace PHP\Test;
 
-use PHPUnit\Framework\TestCase;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 use ReflectionClass;
 
-final class ValuesTest extends TestCase
+final class ValuesTest extends DataProviderTestCase
 {
 	/**
 	 * @dataProvider enumClassAndValuesProvider
