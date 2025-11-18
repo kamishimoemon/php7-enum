@@ -33,7 +33,7 @@ final class ValuesTest extends DataProviderTestCase
 	}
 
 	/**
-	 * @dataProvider enumClassProvider
+	 * @dataProvider enumerationClasses
 	 */
 	public function test_values_should_not_contain_duplicates (string $enumClass): void
 	{
@@ -44,7 +44,7 @@ final class ValuesTest extends DataProviderTestCase
 	}
 
 	/**
-	 * @dataProvider enumClassProvider
+	 * @dataProvider enumerationClasses
 	 */
 	public function test_values_should_match_all_methods_marked_as_value (string $enumClass): void
 	{
@@ -66,13 +66,5 @@ final class ValuesTest extends DataProviderTestCase
 			array_map('spl_object_hash', $actualInstances),
 			'Enum::values() must contain exactly the instances marked with @PHP\EnumValue.'
 		);
-	}
-
-	public function enumClassProvider (): array
-	{
-		return [
-			'Color'  => [Color::class],
-			'ExtendedColor' => [ExtendedColor::class],
-		];
 	}
 }

@@ -32,20 +32,11 @@ final class ValueOfTest extends DataProviderTestCase
 	}
 
 	/**
-	 * @dataProvider enumClassProvider
+	 * @dataProvider enumerationClasses
 	 */
 	public function test_should_throw_if_name_does_not_exist (string $enumClass): void
 	{
 		$this->expectException(\InvalidArgumentException::class);
-
 		$enumClass::valueOf("NOT_A_COLOR");
-	}
-
-	public function enumClassProvider (): array
-	{
-		return [
-			'Color'  => [Color::class],
-			'ExtendedColor' => [ExtendedColor::class],
-		];
 	}
 }
