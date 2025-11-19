@@ -22,6 +22,7 @@ final class ExtendedColor extends Color
 	/**
 	 * @PHP\EnumValue
 	 */
+	#[EnumValue(ID='PHP.Examples.ExtendedColor.GREEN', name='GREEN')]
 	public static function GREEN (): self
 	{
 		return self::$instances['GREEN'] ??= new self('GREEN', '#00FF00', true);
