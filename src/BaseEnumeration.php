@@ -9,27 +9,31 @@ use ReflectionMethod;
 
 abstract class BaseEnumeration implements Enumeration
 {
-	protected static array $instances = [];
+	private static array $instances = [];
 
 	public static function values (): array
 	{
-		$values = [];
 		$class = new ReflectionClass(static::class);
-		foreach ($class->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_STATIC) as $method)
+		if (!isset(self::$instances[$class->getName()]))
 		{
-			$doc = $method->getDocComment();
-			if ($doc && strpos($doc, '@PHP\EnumValue') !== false) {
-				$values[] = $method->invoke(null);
+			self::$instances[$class->getName()] = [];
+			foreach ($class->getMethods(ReflectionMethod::IS_STATIC) as $method)
+			{
+				$doc = $method->getDocComment();
+				if ($doc && strpos($doc, '@PHP\EnumValue') !== false && !isset(self::$instances[$class->getName()][$method->getName()])) {
+					$method->setAccessible(true);
+					self::$instances[$class->getName()][$method->getName()] = $method->invoke(null);
+				}
+			}
+			foreach ((new ReflectionClass(static::class))->getReflectionConstants() as $const)
+			{
+				$doc = $const->getDocComment();
+				if ($doc && strpos($doc, '@PHP\EnumValue') !== false && !isset(self::$instances[$const->getName()])) {
+					self::$instances[$class->getName()][$const->getName()] = new static($const->getName());
+				}
 			}
 		}
-		foreach ((new ReflectionClass(static::class))->getReflectionConstants() as $const)
-		{
-			$doc = $const->getDocComment();
-			if ($doc && strpos($doc, '@PHP\EnumValue') !== false) {
-				$values[] = new static($const->getName());
-			}
-		}
-		return $values;
+		return self::$instances[$class->getName()];
 	}
 
 	public static function valueOf (string $name): self

@@ -14,9 +14,9 @@ abstract class Color extends BaseEnumeration
 	 * @PHP\EnumValue
 	 */
 	#[EnumValue(ID='PHP.Examples.Color.RED', name='RED')]
-	public static function RED (): self
+	private static function RED (): self
 	{
-		return self::$instances['RED'] ??= new class('RED', '#FF0000') extends Color {
+		return new class('RED', '#FF0000') extends Color {
 			use EnumValue;
 			public function isWarm (): bool { return true; }
 		};
@@ -26,9 +26,9 @@ abstract class Color extends BaseEnumeration
 	 * @PHP\EnumValue
 	 */
 	#[EnumValue(ID='PHP.Examples.Color.BLUE', name='BLUE')]
-	public static function BLUE (): self
+	private static function BLUE (): self
 	{
-		return self::$instances['BLUE'] ??= new Blue();
+		return new Blue();
 	}
 
 	private string $hex;

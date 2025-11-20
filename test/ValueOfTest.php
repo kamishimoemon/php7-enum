@@ -25,8 +25,8 @@ final class ValueOfTest extends DataProviderTestCase
 		return [
 			'Color::RED()'  => [Color::class, 'RED', Color::RED()],
 			'Color::BLUE()'  => [Color::class, 'BLUE', Color::BLUE()],
-			'ExtendedColor::RED()' => [ExtendedColor::class, 'RED', Color::RED()],
-			'ExtendedColor::BLUE()' => [ExtendedColor::class, 'BLUE', Color::BLUE()],
+			'ExtendedColor::RED()' => [ExtendedColor::class, 'RED', ExtendedColor::RED()],
+			'ExtendedColor::BLUE()' => [ExtendedColor::class, 'BLUE', ExtendedColor::BLUE()],
 			'ExtendedColor::GREEN()' => [ExtendedColor::class, 'GREEN', ExtendedColor::GREEN()],
 		];
 	}

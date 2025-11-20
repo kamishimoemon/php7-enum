@@ -26,4 +26,6 @@ final class SubclassingTest extends DataProviderTestCase
 			'green' => [ExtendedColor::GREEN(), ExtendedColor::class],
 		];
 	}
+
+	// @todo: add test Color::RED() === ExtendedColor::RED().
 }

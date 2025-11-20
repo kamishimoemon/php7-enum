@@ -13,23 +13,15 @@ final class ValuesTest extends DataProviderTestCase
 	/**
 	 * @dataProvider enumClassAndValuesProvider
 	 */
-	public function test_color_should_return_all_defined_instances (string $enumClass, int $size, array $enumValues): void
+	public function test_color_should_return_all_defined_instances (string $enumClass, array $enumValues): void
 	{
 		$values = $enumClass::values();
 
-		$this->assertCount($size, $values);
+		$this->assertCount(count($enumValues), $values);
 
 		foreach ($enumValues as $value) {
 			$this->assertContains($value, $values);
 		}
-	}
-
-	public function enumClassAndValuesProvider (): array
-	{
-		return [
-			'Color'  => [Color::class, 2, [Color::RED(), Color::BLUE()]],
-			'ExtendedColor' => [ExtendedColor::class, 3, [Color::RED(), Color::BLUE(), ExtendedColor::GREEN()]],
-		];
 	}
 
 	/**
@@ -44,21 +36,10 @@ final class ValuesTest extends DataProviderTestCase
 	}
 
 	/**
-	 * @dataProvider enumerationClasses
+	 * @dataProvider enumClassAndValuesProvider
 	 */
-	public function test_values_should_match_all_methods_marked_as_value (string $enumClass): void
+	public function test_values_should_match_all_methods_marked_as_value (string $enumClass, array $expectedInstances): void
 	{
-		$reflection = new ReflectionClass($enumClass);
-
-		$expectedInstances = [];
-
-		foreach ($reflection->getMethods(\ReflectionMethod::IS_STATIC) as $method) {
-			$doc = $method->getDocComment();
-			if ($doc && strpos($doc, '@PHP\EnumValue') !== false) {
-				$expectedInstances[] = $method->invoke(null);
-			}
-		}
-
 		$actualInstances = $enumClass::values();
 
 		$this->assertEqualsCanonicalizing(
@@ -66,5 +47,13 @@ final class ValuesTest extends DataProviderTestCase
 			array_map('spl_object_hash', $actualInstances),
 			'Enum::values() must contain exactly the instances marked with @PHP\EnumValue.'
 		);
+	}
+
+	public function enumClassAndValuesProvider (): array
+	{
+		return [
+			'Color'  => [Color::class, [Color::RED(), Color::BLUE()]],
+			'ExtendedColor' => [ExtendedColor::class, [ExtendedColor::RED(), ExtendedColor::BLUE(), ExtendedColor::GREEN()]],
+		];
 	}
 }

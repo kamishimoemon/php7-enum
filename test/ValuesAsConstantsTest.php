@@ -10,7 +10,7 @@ use PHP\Examples\DayOfTheWeek;
 class ValuesAsConstantsTest extends TestCase
 {
 	/**
-	 * @dataProvider values
+	 * @dataProvider daysOfTheWeekNames
 	 */
 	public function test_enum_values_should_be_definable_as_constants (string $name): void
 	{
@@ -18,7 +18,7 @@ class ValuesAsConstantsTest extends TestCase
 		$this->assertInstanceOf(DayOfTheWeek::class, $day);
 	}
 
-	public function values (): array
+	public function daysOfTheWeekNames (): array
 	{
 		return [
 			'Sunday' => ['SUNDAY'],
