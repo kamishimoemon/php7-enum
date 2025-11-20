@@ -2,22 +2,30 @@
 
 declare(strict_types=1);
 
-namespace PHP;
+namespace PHP\Examples;
 
+use PHP\Enumeration;
 use ReflectionClass;
-use ReflectionMethod;
 
-abstract class BaseEnumeration implements Enumeration
+final class DayOfTheWeek implements Enumeration
 {
-	protected static array $instances = [];
+	private static array $instances = [];
+
+	private /** @PHP\EnumValue */ const SUNDAY = 1;
+	private /** @PHP\EnumValue */ const MONDAY = 2;
+	private /** @PHP\EnumValue */ const TUESDAY = 3;
+	private /** @PHP\EnumValue */ const WEDNESDAY = 4;
+	private /** @PHP\EnumValue */ const THURSDAY = 5;
+	private /** @PHP\EnumValue */ const FRIDAY = 6;
+	private /** @PHP\EnumValue */ const SATURDAY = 7;
 
 	public static function values (): array
 	{
 		$values = [];
-		foreach ((new ReflectionClass(static::class))->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_STATIC) as $method) {
-			$doc = $method->getDocComment();
+		foreach ((new ReflectionClass(static::class))->getReflectionConstants() as $const) {
+			$doc = $const->getDocComment();
 			if ($doc && strpos($doc, '@PHP\EnumValue') !== false) {
-				$values[] = $method->invoke(null);
+				$values[] = new static($const->getName());
 			}
 		}
 		return $values;
@@ -35,6 +43,11 @@ abstract class BaseEnumeration implements Enumeration
 		throw new \InvalidArgumentException("No enum constant {$class}::{$name}");
 	}
 
+	public static function __callStatic (string $name, array $arguments): self
+	{
+		return static::valueOf($name);
+	}
+
 	private string $name;
 
 	protected function __construct (string $name)
@@ -42,17 +55,17 @@ abstract class BaseEnumeration implements Enumeration
 		$this->name = $name;
 	}
 
-	public function id (): string
-	{
-		return str_replace('\\', '.', static::class) . '.' . $this->name;
-	}
-
 	public final function name (): string
 	{
 		return $this->name;
 	}
 
-	public final function equals (Enumeration $other): bool
+	public function id (): string
+	{
+		return str_replace('\\', '.', static::class) . '.' . $this->name;
+	}
+
+	public final function equals ($other): bool
 	{
 		return $this === $other;
 	}
