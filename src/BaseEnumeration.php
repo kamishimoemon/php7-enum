@@ -63,27 +63,23 @@ abstract class BaseEnumeration implements Enumeration
 
 	public static function valuesAsMap (ReflectionClass $class): array
 	{
+		self::initClass($class);
 		if (self::hasParentClass($class)) return array_merge(self::valuesAsMap($class->getParentClass()), self::$instances[$class->getName()]);
 		return self::$instances[$class->getName()];
 	}
 
 	public static function values (): array
 	{
-		$class = new ReflectionClass(static::class);
-		self::initClass($class);
-		return self::valuesAsMap($class);
+		return self::valuesAsMap(new ReflectionClass(static::class));
 	}
 
 	public static function valueOf (string $name): self
 	{
-		foreach (static::values() as $instance)
-		{
-			if ($instance->name() === $name) {
-				return $instance;
-			}
-		}
-
 		$class = static::class;
+		$values = self::valuesAsMap(new ReflectionClass($class));
+
+		if (isset($values[$name])) return $values[$name];
+
 		throw new \InvalidArgumentException("No enum constant {$class}::{$name}");
 	}
 
