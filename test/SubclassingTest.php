@@ -11,21 +11,37 @@ use PHP\Examples\ExtendedColor;
 final class SubclassingTest extends DataProviderTestCase
 {
 	/**
-	 * @dataProvider dataProvider
+	 * @dataProvider enumValuesAndClass
 	 */
 	public function test_should_support_enum_extension (Enumeration $value, string $class): void
 	{
 		$this->assertInstanceOf($class, $value);
 	}
 
-	public function dataProvider (): array
+	public function enumValuesAndClass (): array
 	{
 		return [
-			'red'  => [Color::RED(), Color::class],
-			'blue' => [Color::BLUE(), Color::class],
-			'green' => [ExtendedColor::GREEN(), ExtendedColor::class],
+			'Color::RED()'  => [Color::RED(), Color::class],
+			'Color::BLUE()' => [Color::BLUE(), Color::class],
+			'ExtendedColor::RED()' => [ExtendedColor::RED(), Color::class],
+			'ExtendedColor::BLUE()' => [ExtendedColor::BLUE(), Color::class],
+			'ExtendedColor::GREEN()' => [ExtendedColor::GREEN(), ExtendedColor::class],
 		];
 	}
 
-	// @todo: add test Color::RED() === ExtendedColor::RED().
+	/**
+	 * @dataProvider sameValuesFromDifferentClasses
+	 */
+	public function test_enum_values_from_subclasses_should_be_same_as_parent_class (Enumeration $value1, Enumeration $value2): void
+	{
+		$this->assertSame($value1, $value2);
+	}
+
+	public function sameValuesFromDifferentClasses (): array
+	{
+		return [
+			'red'  => [Color::RED(), ExtendedColor::RED()],
+			'blue' => [Color::BLUE(), ExtendedColor::BLUE()],
+		];
+	}
 }
