@@ -64,7 +64,7 @@ abstract class BaseEnumeration implements Enumeration
 		}
 	}
 
-	public static function valuesAsMap (ReflectionClass $class): array
+	private static function valuesAsMap (ReflectionClass $class): array
 	{
 		self::initClass($class);
 		if (self::hasParentClass($class)) return array_merge(self::valuesAsMap($class->getParentClass()), self::$instances[$class->getName()]);
