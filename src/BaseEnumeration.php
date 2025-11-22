@@ -19,12 +19,6 @@ abstract class BaseEnumeration implements Enumeration
 		return $doc && strpos($doc, '@'.$className) !== false;
 	}
 
-	private static function constHasAnnotation (ReflectionClassConstant $const, string $className): bool
-	{
-		$doc = $const->getDocComment();
-		return $doc && strpos($doc, '@'.$className) !== false;
-	}
-
 	private static function hasParentClass (ReflectionClass $class): bool
 	{
 		return $class->getParentClass() !== false;
@@ -49,7 +43,7 @@ abstract class BaseEnumeration implements Enumeration
 
 			foreach ((new ReflectionClass(static::class))->getReflectionConstants() as $const)
 			{
-				if (self::constHasAnnotation($const, EnumValue::class) && $const->getDeclaringClass() == $class)
+				if ($const->getDeclaringClass() == $class)
 				{
 					$value = new static($const->getName());
 					// @todo: validar que no existan 2 valores con el mismo nombre en una clase (¿y sus descendientes?).
