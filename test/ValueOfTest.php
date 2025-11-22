@@ -5,30 +5,18 @@ declare(strict_types=1);
 namespace PHP\Test;
 
 use PHP\Enumeration;
-use PHP\Examples\Color;
-use PHP\Examples\ExtendedColor;
 
 final class ValueOfTest extends DataProviderTestCase
 {
 	/**
-	 * @dataProvider enumClassAndNamesProvider
+	 * @dataProvider enumClassesAndName
 	 */
-	public function test_should_return_instance_by_name (string $enumClass, string $enumName, Enumeration $enumValue): void
+	public function test_should_return_same_instance_by_name (string $enumClass, string $enumName): void
 	{
-		$instance = $enumClass::valueOf($enumName);
+		$value1 = $enumClass::valueOf($enumName);
+		$value2 = $enumClass::$enumName();
 
-		$this->assertSame($enumValue, $instance, "{$enumClass}::valueOf('{$enumName}') must return {$enumValue->id()}");
-	}
-
-	public function enumClassAndNamesProvider (): array
-	{
-		return [
-			'Color::RED()'  => [Color::class, 'RED', Color::RED()],
-			'Color::BLUE()'  => [Color::class, 'BLUE', Color::BLUE()],
-			'ExtendedColor::RED()' => [ExtendedColor::class, 'RED', ExtendedColor::RED()],
-			'ExtendedColor::BLUE()' => [ExtendedColor::class, 'BLUE', ExtendedColor::BLUE()],
-			'ExtendedColor::GREEN()' => [ExtendedColor::class, 'GREEN', ExtendedColor::GREEN()],
-		];
+		$this->assertTrue($value1 === $value2, "{$enumClass}::valueOf('{$enumName}') must return the same instance as {$enumClass}::{$enumName}()");
 	}
 
 	/**

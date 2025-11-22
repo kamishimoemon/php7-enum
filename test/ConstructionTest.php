@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace PHP\Test;
 
-use PHP\Examples\Color;
-use PHP\Examples\ExtendedColor;
-
 final class ConstructionTest extends DataProviderTestCase
 {
 	/**

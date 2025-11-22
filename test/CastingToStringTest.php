@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace PHP\Test;
 
-use PHP\Examples\Color;
-use PHP\Examples\ExtendedColor;
+use PHP\Enumeration;
 
 final class CastingToStringTest extends DataProviderTestCase
 {
-	public function test_casting_to_string_should_return_name_by_default (): void
+	/**
+	 * @dataProvider enumValuesAndName
+	 */
+	public function test_casting_to_string_should_return_name_by_default (Enumeration $value, string $name): void
 	{
-		$this->assertSame('RED', (string) Color::RED());
-		$this->assertSame('BLUE', (string) Color::BLUE());
-		$this->assertSame('GREEN', (string) ExtendedColor::GREEN());
+		$this->assertEquals($name, strval($value));
 	}
 }

@@ -10,14 +10,14 @@ use PHP\Examples\ExtendedColor;
 final class CustomPropertiesTest extends DataProviderTestCase
 {
 	/**
-	 * @dataProvider dataProvider
+	 * @dataProvider enumValuesWithCustomProperties
 	 */
 	public function test_should_return_hex_code (Color $color, string $hex): void
 	{
 		$this->assertSame($hex, $color->hex());
 	}
 
-	public function dataProvider (): array
+	public function enumValuesWithCustomProperties (): array
 	{
 		return [
 			'red'  => [Color::RED(), '#FF0000'],

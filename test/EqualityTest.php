@@ -7,6 +7,9 @@ namespace PHP\Test;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 
+/**
+ * @todo: redo this tests with data providers
+ */
 final class EqualityTest extends DataProviderTestCase
 {
 	public function test_should_return_true_for_same_instance (): void
@@ -20,8 +23,10 @@ final class EqualityTest extends DataProviderTestCase
 	{
 		$this->assertFalse(Color::RED()->equals(Color::BLUE()));
 		$this->assertFalse(Color::RED()->equals(ExtendedColor::GREEN()));
+
 		$this->assertFalse(Color::BLUE()->equals(Color::RED()));
 		$this->assertFalse(Color::BLUE()->equals(ExtendedColor::GREEN()));
+
 		$this->assertFalse(ExtendedColor::GREEN()->equals(Color::RED()));
 		$this->assertFalse(ExtendedColor::GREEN()->equals(Color::BLUE()));
 	}

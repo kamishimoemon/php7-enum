@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace PHP\Test;
 
 use PHP\Enumeration;
+use PHP\Examples\Job;
+use PHP\Examples\FirstJob;
+use PHP\Examples\SecondJob;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 
@@ -18,17 +21,6 @@ final class SubclassingTest extends DataProviderTestCase
 		$this->assertInstanceOf($class, $value);
 	}
 
-	public function enumValuesAndClass (): array
-	{
-		return [
-			'Color::RED()'  => [Color::RED(), Color::class],
-			'Color::BLUE()' => [Color::BLUE(), Color::class],
-			'ExtendedColor::RED()' => [ExtendedColor::RED(), Color::class],
-			'ExtendedColor::BLUE()' => [ExtendedColor::BLUE(), Color::class],
-			'ExtendedColor::GREEN()' => [ExtendedColor::GREEN(), ExtendedColor::class],
-		];
-	}
-
 	/**
 	 * @dataProvider sameValuesFromDifferentClasses
 	 */
@@ -40,8 +32,11 @@ final class SubclassingTest extends DataProviderTestCase
 	public function sameValuesFromDifferentClasses (): array
 	{
 		return [
-			'red'  => [Color::RED(), ExtendedColor::RED()],
-			'blue' => [Color::BLUE(), ExtendedColor::BLUE()],
+			'Job|FirstJob::NOVICE()' => [Job::NOVICE(), FirstJob::NOVICE()],
+			'Job|SecondJob::NOVICE()' => [Job::NOVICE(), SecondJob::NOVICE()],
+			'FirstJob|SecondJob::NOVICE()' => [FirstJob::NOVICE(), SecondJob::NOVICE()],
+			'Color|ExtendedColor::RED()'  => [Color::RED(), ExtendedColor::RED()],
+			'Color|ExtendedColor::BLUE()' => [Color::BLUE(), ExtendedColor::BLUE()],
 		];
 	}
 }

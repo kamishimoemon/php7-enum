@@ -4,26 +4,21 @@ declare(strict_types=1);
 
 namespace PHP\Test;
 
-use PHP\Enumeration;
-use PHP\Examples\Color;
-use PHP\Examples\ExtendedColor;
-
 final class UniquenessTest extends DataProviderTestCase
 {
 	/**
-	 * @dataProvider dataProvider
+	 * @dataProvider enumClassesAndName
 	 */
-	public function test_it_returns_the_same_instance_for_the_same_value (Enumeration $value1, Enumeration $value2): void
+	public function test_same_name_should_return_always_the_same_instance (string $class, string $name): void
 	{
-		$this->assertSame($value1, $value2, 'Enum should return the same instance for the same value');
+		$this->assertSame($class::$name(), $class::$name(), "{$class}::{$name}() should return the same instance every time");
 	}
 
-	public function dataProvider (): array
+	/**
+	 * @dataProvider enumClassesAndName
+	 */
+	public function test_valueOf_should_return_the_same_instance_for_the_same_name (string $class, string $name): void
 	{
-		return [
-			'red'  => [Color::RED(), Color::RED()],
-			'blue' => [Color::BLUE(), Color::BLUE()],
-			'green' => [ExtendedColor::GREEN(), ExtendedColor::GREEN()],
-		];
+		$this->assertSame($class::valueOf($name), $class::valueOf($name), "{$class}::valueOf('{$name}') should return the same instance for the same name");
 	}
 }

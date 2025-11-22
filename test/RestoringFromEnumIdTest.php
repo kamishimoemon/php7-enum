@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace PHP\Test;
 
 use PHP\Enumeration;
-use PHP\Examples\Color;
-use PHP\Examples\ExtendedColor;
-
 use function PHP\enumval;
 
 final class CastingToEnumValueTest extends DataProviderTestCase
 {
 	/**
-	 * @dataProvider dataProvider
+	 * @dataProvider enumValuesAndID
 	 */
 	public function test_should_restore_enum_from_id (Enumeration $enumValue, string $enumId): void
 	{
@@ -25,14 +22,5 @@ final class CastingToEnumValueTest extends DataProviderTestCase
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		enumval('PHP.Examples.Color.PURPLE');
-	}
-
-	public function dataProvider (): array
-	{
-		return [
-			'red'  => [Color::RED(), Color::RED()->id()],
-			'blue' => [Color::BLUE(), Color::BLUE()->id()],
-			'green' => [ExtendedColor::GREEN(), ExtendedColor::GREEN()->id()],
-		];
 	}
 }

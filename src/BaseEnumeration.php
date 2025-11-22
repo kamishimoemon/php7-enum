@@ -24,6 +24,15 @@ abstract class BaseEnumeration implements Enumeration
 		return $class->getParentClass() !== false;
 	}
 
+	private static function newInstance (ReflectionClass $class, ReflectionClassConstant $const): Enumeration
+	{
+		$value = $class->newInstanceWithoutConstructor();
+		$constructor = $class->getConstructor();
+		$constructor->setAccessible(true);
+		$constructor->invoke($value, $const->getName());
+		return $value;
+	}
+
 	private static function initClass (ReflectionClass $class): void
 	{
 		if (!isset(self::$instances[$class->getName()]))
@@ -41,11 +50,11 @@ abstract class BaseEnumeration implements Enumeration
 				}
 			}
 
-			foreach ((new ReflectionClass(static::class))->getReflectionConstants() as $const)
+			foreach ($class->getReflectionConstants() as $const)
 			{
 				if ($const->getDeclaringClass() == $class)
 				{
-					$value = new static($const->getName());
+					$value = self::newInstance($class, $const);
 					// @todo: validar que no existan 2 valores con el mismo nombre en una clase (¿y sus descendientes?).
 					self::$instances[$class->getName()][$value->name()] = $value;
 				}
