@@ -11,6 +11,9 @@ use PHP\Examples\SecondJob;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 
+/**
+ * @todo: forbid override of values in subclasses
+ */
 final class SubclassingTest extends DataProviderTestCase
 {
 	/**
