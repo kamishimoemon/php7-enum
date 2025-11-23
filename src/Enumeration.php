@@ -44,6 +44,14 @@ interface Enumeration
 	public function name (): string;
 
 	/**
+	 * Returns the ordinal of this enumeration constant (its position in its enum declaration,
+	 * where the initial constant is assigned an ordinal of zero).
+	 *
+	 * @return int The ordinal of the enum.
+	 */
+	public function ordinal (): int;
+
+	/**
 	 * Compares this enum with another instance for logical equality.
 	 *
 	 * @param self $other The other instance to compare against.

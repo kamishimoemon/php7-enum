@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\BaseEnumeration;
-
 class FirstJob extends Job
 {
 	const SWORDMAN = 1;

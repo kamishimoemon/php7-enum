@@ -29,7 +29,7 @@ abstract class BaseEnumeration implements Enumeration
 		$value = $class->newInstanceWithoutConstructor();
 		$constructor = $class->getConstructor();
 		$constructor->setAccessible(true);
-		$constructor->invoke($value, $const->getName());
+		$constructor->invoke($value, $const->getName(), intval($const->getValue()));
 		return $value;
 	}
 
@@ -71,9 +71,16 @@ abstract class BaseEnumeration implements Enumeration
 		return self::$instances[$class->getName()];
 	}
 
+	private static function valuesAsList (ReflectionClass $class): array
+	{
+		$list = array_values(self::valuesAsMap($class));
+		usort($list, fn($x, $y) => $x->ordinal() - $y->ordinal());
+		return $list;
+	}
+
 	public static function values (): array
 	{
-		return self::valuesAsMap(new ReflectionClass(static::class));
+		return self::valuesAsList(new ReflectionClass(static::class));
 	}
 
 	public static function valueOf (string $name): self
@@ -92,10 +99,12 @@ abstract class BaseEnumeration implements Enumeration
 	}
 
 	private string $name;
+	private int $ordinal;
 
-	protected function __construct (string $name)
+	protected function __construct (string $name, int $ordinal)
 	{
 		$this->name = $name;
+		$this->ordinal = $ordinal;
 	}
 
 	public function id (): string
@@ -106,6 +115,11 @@ abstract class BaseEnumeration implements Enumeration
 	public final function name (): string
 	{
 		return $this->name;
+	}
+
+	public final function ordinal (): int
+	{
+		return $this->ordinal;
 	}
 
 	public final function equals (Enumeration $other): bool

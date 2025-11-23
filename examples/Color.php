@@ -16,7 +16,7 @@ abstract class Color extends BaseEnumeration
 	#[EnumValue(ID='PHP.Examples.Color.RED', name='RED')]
 	private static function RED (): self
 	{
-		return new class('RED', '#FF0000') extends Color {
+		return new class('RED', 0, '#FF0000') extends Color {
 			use EnumValue;
 			public function isWarm (): bool { return true; }
 		};
@@ -33,9 +33,9 @@ abstract class Color extends BaseEnumeration
 
 	private string $hex;
 
-	protected function __construct (string $name, string $hex)
+	protected function __construct (string $name, int $ordinal, string $hex)
 	{
-		parent::__construct($name);
+		parent::__construct($name, $ordinal);
 		$this->hex = $hex;
 	}
 
@@ -53,7 +53,7 @@ final class Blue extends Color
 
 	protected function __construct ()
 	{
-		parent::__construct('BLUE', '#0000FF');
+		parent::__construct('BLUE', 1, '#0000FF');
 	}
 
 	public function isWarm (): bool

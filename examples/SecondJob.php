@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\BaseEnumeration;
-
 class SecondJob extends FirstJob
 {
 	const KNIGHT = 7;
