@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace PHP\Examples;
 
 use PHP\Enumeration;
-use PHP\BaseEnumeration;
+use PHP\Enum;
 use PHP\EnumValue;
 
-abstract class Color extends BaseEnumeration
+abstract class Color extends Enum
 {
 	/**
 	 * @PHP\EnumValue

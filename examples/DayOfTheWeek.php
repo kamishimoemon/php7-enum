@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\BaseEnumeration;
+use PHP\Enum;
 
-final class DayOfTheWeek extends BaseEnumeration
+final class DayOfTheWeek extends Enum
 {
 	public const SUNDAY = 1;
 	public const MONDAY = 2;

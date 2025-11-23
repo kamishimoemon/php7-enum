@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\BaseEnumeration;
+use PHP\Enum;
 
 /**
  * Jobs tree from Ragnarok Online.
  */
-class Job extends BaseEnumeration
+class Job extends Enum
 {
 	const NOVICE = 0;
 }

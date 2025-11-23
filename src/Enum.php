@@ -9,7 +9,7 @@ use ReflectionClass;
 use ReflectionClassConstant;
 use ReflectionMethod;
 
-abstract class BaseEnumeration implements Enumeration
+abstract class Enum implements Enumeration
 {
 	private static array $instances = [];
 
