@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\Enum;
+use PHP\ConstEnum;
 
-final class DayOfTheWeek extends Enum
+final class DayOfTheWeek extends ConstEnum
 {
 	public const SUNDAY = 1;
 	public const MONDAY = 2;

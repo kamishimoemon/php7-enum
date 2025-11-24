@@ -42,7 +42,7 @@ final class ValuesTest extends DataProviderTestCase
 		$this->assertEqualsCanonicalizing(
 			array_map('spl_object_hash', $expectedInstances),
 			array_map('spl_object_hash', $actualInstances),
-			'Enum::values() must contain exactly the instances marked with @PHP\EnumValue.'
+			"{$enumClass}::values() must contain exactly the instances marked with @PHP\EnumValue."
 		);
 	}
 }

@@ -8,9 +8,9 @@ final class ExtendedColor extends Color
 {
 	private bool $warm;
 
-	protected function __construct (string $name, int $ordinal, string $hex, bool $warm)
+	protected function __construct (string $hex, bool $warm)
 	{
-		parent::__construct($name, $ordinal, $hex);
+		parent::__construct($hex);
 		$this->warm = $warm;
 	}
 
@@ -19,12 +19,8 @@ final class ExtendedColor extends Color
 		return $this->warm;
 	}
 
-	/**
-	 * @PHP\EnumValue
-	 */
-	#[EnumValue(ID='PHP.Examples.ExtendedColor.GREEN', name='GREEN')]
-	private static function GREEN (): self
+	protected static final function GREEN (): self
 	{
-		return new self('GREEN', 2, '#00FF00', true);
+		return new self('#00FF00', true);
 	}
 }

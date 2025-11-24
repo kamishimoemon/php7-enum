@@ -4,38 +4,28 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\Enumeration;
-use PHP\Enum;
+use PHP\CustomEnum;
 use PHP\EnumValue;
 
-abstract class Color extends Enum
+abstract class Color extends CustomEnum
 {
-	/**
-	 * @PHP\EnumValue
-	 */
-	#[EnumValue(ID='PHP.Examples.Color.RED', name='RED')]
-	private static function RED (): self
+	protected static final function RED (): self
 	{
-		return new class('RED', 0, '#FF0000') extends Color {
+		return new class('#FF0000') extends Color {
 			use EnumValue;
 			public function isWarm (): bool { return true; }
 		};
 	}
 
-	/**
-	 * @PHP\EnumValue
-	 */
-	#[EnumValue(ID='PHP.Examples.Color.BLUE', name='BLUE')]
-	private static function BLUE (): self
+	protected static final function BLUE (): self
 	{
 		return new Blue();
 	}
 
 	private string $hex;
 
-	protected function __construct (string $name, int $ordinal, string $hex)
+	protected function __construct (string $hex)
 	{
-		parent::__construct($name, $ordinal);
 		$this->hex = $hex;
 	}
 
@@ -53,7 +43,7 @@ final class Blue extends Color
 
 	protected function __construct ()
 	{
-		parent::__construct('BLUE', 1, '#0000FF');
+		parent::__construct('#0000FF');
 	}
 
 	public function isWarm (): bool

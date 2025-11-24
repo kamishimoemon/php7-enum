@@ -4,71 +4,29 @@ declare(strict_types=1);
 
 namespace PHP;
 
-use PHP\EnumValue;
 use ReflectionClass;
-use ReflectionClassConstant;
-use ReflectionMethod;
+use InvalidArgumentException;
 
 abstract class Enum implements Enumeration
 {
-	private static array $instances = [];
-
-	private static function methodHasAnnotation (ReflectionMethod $method, string $className): bool
+	protected static final function initInstance (Enum $enum, string $name, int $ordinal): void
 	{
-		$doc = $method->getDocComment();
-		return $doc && strpos($doc, '@'.$className) !== false;
+		$enum->name = $name;
+		$enum->ordinal = $ordinal;
 	}
 
-	private static function hasParentClass (ReflectionClass $class): bool
-	{
-		return $class->getParentClass() !== false;
-	}
+	protected static abstract function instances (ReflectionClass $class, int $ordinality): array;
 
-	private static function newInstance (ReflectionClass $class, ReflectionClassConstant $const): Enumeration
-	{
-		$value = $class->newInstanceWithoutConstructor();
-		$constructor = $class->getConstructor();
-		$constructor->setAccessible(true);
-		$constructor->invoke($value, $const->getName(), intval($const->getValue()));
-		return $value;
-	}
-
-	private static function initClass (ReflectionClass $class): void
-	{
-		if (!isset(self::$instances[$class->getName()]))
-		{
-			self::$instances[$class->getName()] = [];
-
-			foreach ($class->getMethods(ReflectionMethod::IS_STATIC) as $method)
-			{
-				if (self::methodHasAnnotation($method, EnumValue::class) && $method->getDeclaringClass() == $class)
-				{
-					$method->setAccessible(true);
-					$value = $method->invoke(null);
-					// @todo: validar que no existan 2 valores con el mismo nombre en una clase (¿y sus descendientes?).
-					self::$instances[$class->getName()][$value->name()] = $value;
-				}
-			}
-
-			foreach ($class->getReflectionConstants() as $const)
-			{
-				if ($const->getDeclaringClass() == $class)
-				{
-					$value = self::newInstance($class, $const);
-					// @todo: validar que no existan 2 valores con el mismo nombre en una clase (¿y sus descendientes?).
-					self::$instances[$class->getName()][$value->name()] = $value;
-				}
-			}
-
-			if ($class->getParentClass()) self::initClass($class->getParentClass());
-		}
-	}
+	protected static abstract function hasParentClass (ReflectionClass $class): bool;
 
 	private static function valuesAsMap (ReflectionClass $class): array
 	{
-		self::initClass($class);
-		if (self::hasParentClass($class)) return array_merge(self::valuesAsMap($class->getParentClass()), self::$instances[$class->getName()]);
-		return self::$instances[$class->getName()];
+		if (static::hasParentClass($class))
+		{
+			$parentValues = self::valuesAsMap($class->getParentClass());
+			return array_merge($parentValues, static::instances($class, count($parentValues) - 1));
+		}
+		return static::instances($class, 0);
 	}
 
 	private static function valuesAsList (ReflectionClass $class): array
@@ -78,22 +36,22 @@ abstract class Enum implements Enumeration
 		return $list;
 	}
 
-	public static function values (): array
+	public static final function values (): array
 	{
 		return self::valuesAsList(new ReflectionClass(static::class));
 	}
 
-	public static function valueOf (string $name): self
+	public static final function valueOf (string $name): self
 	{
 		$class = static::class;
 		$values = self::valuesAsMap(new ReflectionClass($class));
 
 		if (isset($values[$name])) return $values[$name];
 
-		throw new \InvalidArgumentException("No enum constant {$class}::{$name}");
+		throw new InvalidArgumentException("No enum constant {$class}::{$name}");
 	}
 
-	public static function __callStatic (string $name, array $arguments): self
+	public static final function __callStatic (string $name, array $arguments): self
 	{
 		return static::valueOf($name);
 	}
@@ -101,7 +59,7 @@ abstract class Enum implements Enumeration
 	private string $name;
 	private int $ordinal;
 
-	protected function __construct (string $name, int $ordinal)
+	private function __construct (string $name, int $ordinal)
 	{
 		$this->name = $name;
 		$this->ordinal = $ordinal;
