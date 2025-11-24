@@ -9,6 +9,7 @@ use PHP\Examples\DayOfTheWeek;
 use PHP\Examples\Job;
 use PHP\Examples\FirstJob;
 use PHP\Examples\SecondJob;
+use PHP\Examples\Planet;
 use PHP\Examples\Color;
 use PHP\Examples\ExtendedColor;
 
@@ -21,6 +22,7 @@ abstract class DataProviderTestCase extends TestCase
 			'Job'  => [Job::class],
 			'FirstJob'  => [FirstJob::class],
 			'SecondJob'  => [SecondJob::class],
+			'Planet'  => [Planet::class],
 			'Color'  => [Color::class],
 			'ExtendedColor' => [ExtendedColor::class],
 		];
@@ -29,7 +31,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumValues (): array
 	{
 		return [
-			//'::'  => [::(), 'PHP.Examples..'],
 			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY()],
 			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY()],
 			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY()],
@@ -57,6 +58,14 @@ abstract class DataProviderTestCase extends TestCase
 			'SecondJob::HUNTER'  => [SecondJob::HUNTER()],
 			'SecondJob::BARD'  => [SecondJob::BARD()],
 			'SecondJob::DANCER'  => [SecondJob::DANCER()],
+			'Planet::MERCURY'  => [Planet::MERCURY()],
+			'Planet::VENUS'  => [Planet::VENUS()],
+			'Planet::EARTH'  => [Planet::EARTH()],
+			'Planet::MARS'  => [Planet::MARS()],
+			'Planet::JUPITER'  => [Planet::JUPITER()],
+			'Planet::SATURN'  => [Planet::SATURN()],
+			'Planet::URANUS'  => [Planet::URANUS()],
+			'Planet::NEPTUNE'  => [Planet::NEPTUNE()],
 			'Color::RED'  => [Color::RED()],
 			'Color::BLUE' => [Color::BLUE()],
 			'ExtendedColor::GREEN' => [ExtendedColor::GREEN()],
@@ -66,7 +75,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumValuesAndID (): array
 	{
 		return [
-			//'::'  => [::(), 'PHP.Examples..'],
 			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY(), 'PHP.Examples.DayOfTheWeek.SUNDAY'],
 			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY(), 'PHP.Examples.DayOfTheWeek.MONDAY'],
 			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY(), 'PHP.Examples.DayOfTheWeek.TUESDAY'],
@@ -94,6 +102,14 @@ abstract class DataProviderTestCase extends TestCase
 			'SecondJob::HUNTER'  => [SecondJob::HUNTER(), 'PHP.Examples.SecondJob.HUNTER'],
 			'SecondJob::BARD'  => [SecondJob::BARD(), 'PHP.Examples.SecondJob.BARD'],
 			'SecondJob::DANCER'  => [SecondJob::DANCER(), 'PHP.Examples.SecondJob.DANCER'],
+			'Planet::MERCURY'  => [Planet::MERCURY(), 'PHP.Examples.Planet.MERCURY'],
+			'Planet::VENUS'  => [Planet::VENUS(), 'PHP.Examples.Planet.VENUS'],
+			'Planet::EARTH'  => [Planet::EARTH(), 'PHP.Examples.Planet.EARTH'],
+			'Planet::MARS'  => [Planet::MARS(), 'PHP.Examples.Planet.MARS'],
+			'Planet::JUPITER'  => [Planet::JUPITER(), 'PHP.Examples.Planet.JUPITER'],
+			'Planet::SATURN'  => [Planet::SATURN(), 'PHP.Examples.Planet.SATURN'],
+			'Planet::URANUS'  => [Planet::URANUS(), 'PHP.Examples.Planet.URANUS'],
+			'Planet::NEPTUNE'  => [Planet::NEPTUNE(), 'PHP.Examples.Planet.NEPTUNE'],
 			'Color::RED'  => [Color::RED(), 'PHP.Examples.Color.RED'],
 			'Color::BLUE' => [Color::BLUE(), 'PHP.Examples.Color.BLUE'],
 			'ExtendedColor::GREEN' => [ExtendedColor::GREEN(), 'PHP.Examples.ExtendedColor.GREEN'],
@@ -103,7 +119,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumValuesAndName (): array
 	{
 		return [
-			//'::'  => [::(), 'PHP.Examples..'],
 			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY(), 'SUNDAY'],
 			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY(), 'MONDAY'],
 			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY(), 'TUESDAY'],
@@ -131,6 +146,14 @@ abstract class DataProviderTestCase extends TestCase
 			'SecondJob::HUNTER'  => [SecondJob::HUNTER(), 'HUNTER'],
 			'SecondJob::BARD'  => [SecondJob::BARD(), 'BARD'],
 			'SecondJob::DANCER'  => [SecondJob::DANCER(), 'DANCER'],
+			'Planet::MERCURY'  => [Planet::MERCURY(), 'MERCURY'],
+			'Planet::VENUS'  => [Planet::VENUS(), 'VENUS'],
+			'Planet::EARTH'  => [Planet::EARTH(), 'EARTH'],
+			'Planet::MARS'  => [Planet::MARS(), 'MARS'],
+			'Planet::JUPITER'  => [Planet::JUPITER(), 'JUPITER'],
+			'Planet::SATURN'  => [Planet::SATURN(), 'SATURN'],
+			'Planet::URANUS'  => [Planet::URANUS(), 'URANUS'],
+			'Planet::NEPTUNE'  => [Planet::NEPTUNE(), 'NEPTUNE'],
 			'Color::RED'  => [Color::RED(), 'RED'],
 			'Color::BLUE' => [Color::BLUE(), 'BLUE'],
 			'ExtendedColor::GREEN' => [ExtendedColor::GREEN(), 'GREEN'],
@@ -140,7 +163,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumClassesAndName (): array
 	{
 		return [
-			//'::'  => [::(), 'PHP.Examples..'],
 			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::class, 'SUNDAY'],
 			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::class, 'MONDAY'],
 			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::class, 'TUESDAY'],
@@ -176,6 +198,14 @@ abstract class DataProviderTestCase extends TestCase
 			'SecondJob::HUNTER'  => [SecondJob::class, 'HUNTER'],
 			'SecondJob::BARD'  => [SecondJob::class, 'BARD'],
 			'SecondJob::DANCER'  => [SecondJob::class, 'DANCER'],
+			'Planet::MERCURY'  => [Planet::class, 'MERCURY'],
+			'Planet::VENUS'  => [Planet::class, 'VENUS'],
+			'Planet::EARTH'  => [Planet::class, 'EARTH'],
+			'Planet::MARS'  => [Planet::class, 'MARS'],
+			'Planet::JUPITER'  => [Planet::class, 'JUPITER'],
+			'Planet::SATURN'  => [Planet::class, 'SATURN'],
+			'Planet::URANUS'  => [Planet::class, 'URANUS'],
+			'Planet::NEPTUNE'  => [Planet::class, 'NEPTUNE'],
 			'Color::RED'  => [Color::class, 'RED'],
 			'Color::BLUE' => [Color::class, 'BLUE'],
 			'ExtendedColor::RED' => [ExtendedColor::class, 'RED'],
@@ -191,6 +221,7 @@ abstract class DataProviderTestCase extends TestCase
 			'Job'  => [Job::class, [Job::NOVICE()]],
 			'FirstJob'  => [FirstJob::class, [FirstJob::NOVICE(), FirstJob::SWORDMAN(), FirstJob::MAGE(), FirstJob::MERCHANT(), FirstJob::ACOLYTE(), FirstJob::THIEF(), FirstJob::ARCHER()]],
 			'SecondJob'  => [SecondJob::class, [SecondJob::NOVICE(), SecondJob::SWORDMAN(), SecondJob::MAGE(), SecondJob::MERCHANT(), SecondJob::ACOLYTE(), SecondJob::THIEF(), SecondJob::ARCHER(), SecondJob::KNIGHT(), SecondJob::CRUSADER(), SecondJob::WIZARD(), SecondJob::SAGE(), SecondJob::BLACKSMITH(), SecondJob::ALCHEMIST(), SecondJob::PRIEST(), SecondJob::MONK(), SecondJob::ASSASSIN(), SecondJob::ROGUE(), SecondJob::HUNTER(), SecondJob::BARD(), SecondJob::DANCER()]],
+			'Planet' => [Planet::class, [Planet::MERCURY(), Planet::VENUS(), Planet::EARTH(), Planet::MARS(), Planet::JUPITER(), Planet::SATURN(), Planet::URANUS(), Planet::NEPTUNE()]],
 			'Color'  => [Color::class, [Color::RED(), Color::BLUE()]],
 			'ExtendedColor' => [ExtendedColor::class, [ExtendedColor::RED(), ExtendedColor::BLUE(), ExtendedColor::GREEN()]],
 		];
@@ -234,6 +265,14 @@ abstract class DataProviderTestCase extends TestCase
 			'SecondJob::HUNTER'  => [SecondJob::HUNTER(), SecondJob::class],
 			'SecondJob::BARD'  => [SecondJob::BARD(), SecondJob::class],
 			'SecondJob::DANCER'  => [SecondJob::DANCER(), SecondJob::class],
+			'Planet::MERCURY'  => [Planet::MERCURY(), Planet::class],
+			'Planet::VENUS'  => [Planet::VENUS(), Planet::class],
+			'Planet::EARTH'  => [Planet::EARTH(), Planet::class],
+			'Planet::MARS'  => [Planet::MARS(), Planet::class],
+			'Planet::JUPITER'  => [Planet::JUPITER(), Planet::class],
+			'Planet::SATURN'  => [Planet::SATURN(), Planet::class],
+			'Planet::URANUS'  => [Planet::URANUS(), Planet::class],
+			'Planet::NEPTUNE'  => [Planet::NEPTUNE(), Planet::class],
 			'Color::RED()'  => [Color::RED(), Color::class],
 			'Color::BLUE()' => [Color::BLUE(), Color::class],
 			'ExtendedColor::RED()' => [ExtendedColor::RED(), Color::class],

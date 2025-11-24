@@ -30,7 +30,8 @@
 		}
 	},
 	"scripts": {
-		"test": "phpunit test --colors=always --testdox"
+		"test": "phpunit test --colors=always --testdox",
+		"planets": "php -r 'require \"vendor/autoload.php\"; PHP\\Examples\\Planet::main();'"
 	},
 	"minimum-stability": "stable"
 }
