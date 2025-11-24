@@ -15,7 +15,7 @@ abstract class ConstEnum extends Enum
 	private static function newInstance (ReflectionClass $class, ReflectionClassConstant $const, int &$ordinality): Enumeration
 	{
 		$instance = $class->newInstanceWithoutConstructor();
-		parent::initInstance($instance, $const->getName(), $ordinality++);
+		parent::initInstance($instance, $class, $const->getName(), $ordinality++);
 		return $instance;
 	}
 

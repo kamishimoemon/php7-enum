@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace PHP\Examples;
 
 use PHP\CustomEnum;
-use PHP\EnumValue;
 
 abstract class Color extends CustomEnum
 {
 	protected static final function RED (): self
 	{
 		return new class('#FF0000') extends Color {
-			use EnumValue;
 			public function isWarm (): bool { return true; }
 		};
 	}
@@ -39,8 +37,6 @@ abstract class Color extends CustomEnum
 
 final class Blue extends Color
 {
-	use EnumValue;
-
 	protected function __construct ()
 	{
 		parent::__construct('#0000FF');

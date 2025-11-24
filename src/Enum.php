@@ -9,8 +9,9 @@ use InvalidArgumentException;
 
 abstract class Enum implements Enumeration
 {
-	protected static final function initInstance (Enum $enum, string $name, int $ordinal): void
+	protected static final function initInstance (Enum $enum, ReflectionClass $class, string $name, int $ordinal): void
 	{
+		$enum->id = str_replace('\\', '.', $class->getName()) . '.' . $name;
 		$enum->name = $name;
 		$enum->ordinal = $ordinal;
 	}
@@ -56,18 +57,20 @@ abstract class Enum implements Enumeration
 		return static::valueOf($name);
 	}
 
+	private string $id;
 	private string $name;
 	private int $ordinal;
 
-	private function __construct (string $name, int $ordinal)
+	private function __construct (string $id, string $name, int $ordinal)
 	{
+		$this->id = $id;
 		$this->name = $name;
 		$this->ordinal = $ordinal;
 	}
 
-	public function id (): string
+	public final function id (): string
 	{
-		return str_replace('\\', '.', static::class) . '.' . $this->name;
+		return $this->id;
 	}
 
 	public final function name (): string

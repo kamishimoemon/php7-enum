@@ -12,11 +12,11 @@ abstract class CustomEnum extends Enum
 {
 	private static array $instances = [];
 
-	private static function newInstance (ReflectionMethod $method, int &$ordinality): Enumeration
+	private static function newInstance (ReflectionClass $class, ReflectionMethod $method, int &$ordinality): Enumeration
 	{
 		$method->setAccessible(true);
 		$instance = $method->invoke(null);
-		parent::initInstance($instance, $method->getName(), $ordinality++);
+		parent::initInstance($instance, $class, $method->getName(), $ordinality++);
 		return $instance;
 	}
 
@@ -29,7 +29,7 @@ abstract class CustomEnum extends Enum
 			{
 				if ($method->getDeclaringClass() == $class && $method->isProtected() && $method->isStatic() && $method->isFinal() && $method->hasReturnType() && ($method->getReturnType() == 'self' || $method->getReturnType() == $class->getName()))
 				{
-					$instance = self::newInstance($method, $ordinality);
+					$instance = self::newInstance($class, $method, $ordinality);
 					self::$instances[$class->getName()][$instance->name()] = $instance;
 				}
 			}
