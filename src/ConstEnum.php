@@ -45,4 +45,6 @@ abstract class ConstEnum extends Enum
 	{
 		return $class->getParentClass() !== false && $class->getParentClass()->getName() !== self::class;
 	}
+
+	private function __construct () {}
 }

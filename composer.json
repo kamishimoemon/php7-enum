@@ -31,7 +31,8 @@
 	},
 	"scripts": {
 		"test": "phpunit test --colors=always --testdox",
-		"planets": "php -r 'require \"vendor/autoload.php\"; PHP\\Examples\\Planet::main();'"
+		"planets": "php -r 'require \"vendor/autoload.php\"; PHP\\Examples\\Planet::main();'",
+		"daysoftheweek": "php -r 'require \"vendor/autoload.php\"; PHP\\Examples\\DayOfTheWeek::main();'"
 	},
 	"minimum-stability": "stable"
 }

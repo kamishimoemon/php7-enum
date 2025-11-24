@@ -18,11 +18,11 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumerationClasses (): array
 	{
 		return [
-			'DayOfTheWeek'  => [DayOfTheWeek::class],
 			'Job'  => [Job::class],
 			'FirstJob'  => [FirstJob::class],
 			'SecondJob'  => [SecondJob::class],
 			'Planet'  => [Planet::class],
+			'DayOfTheWeek'  => [DayOfTheWeek::class],
 			'Color'  => [Color::class],
 			'ExtendedColor' => [ExtendedColor::class],
 		];
@@ -31,13 +31,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumValues (): array
 	{
 		return [
-			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY()],
-			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY()],
-			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY()],
-			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::WEDNESDAY()],
-			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::THURSDAY()],
-			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::FRIDAY()],
-			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::SATURDAY()],
 			'Job::NOVICE'  => [Job::NOVICE()],
 			'FirstJob::SWORDMAN'  => [FirstJob::SWORDMAN()],
 			'FirstJob::MAGE'  => [FirstJob::MAGE()],
@@ -66,6 +59,13 @@ abstract class DataProviderTestCase extends TestCase
 			'Planet::SATURN'  => [Planet::SATURN()],
 			'Planet::URANUS'  => [Planet::URANUS()],
 			'Planet::NEPTUNE'  => [Planet::NEPTUNE()],
+			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY()],
+			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY()],
+			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY()],
+			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::WEDNESDAY()],
+			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::THURSDAY()],
+			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::FRIDAY()],
+			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::SATURDAY()],
 			'Color::RED'  => [Color::RED()],
 			'Color::BLUE' => [Color::BLUE()],
 			'ExtendedColor::GREEN' => [ExtendedColor::GREEN()],
@@ -75,13 +75,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumValuesAndID (): array
 	{
 		return [
-			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY(), 'PHP.Examples.DayOfTheWeek.SUNDAY'],
-			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY(), 'PHP.Examples.DayOfTheWeek.MONDAY'],
-			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY(), 'PHP.Examples.DayOfTheWeek.TUESDAY'],
-			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::WEDNESDAY(), 'PHP.Examples.DayOfTheWeek.WEDNESDAY'],
-			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::THURSDAY(), 'PHP.Examples.DayOfTheWeek.THURSDAY'],
-			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::FRIDAY(), 'PHP.Examples.DayOfTheWeek.FRIDAY'],
-			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::SATURDAY(), 'PHP.Examples.DayOfTheWeek.SATURDAY'],
 			'Job::NOVICE'  => [Job::NOVICE(), 'PHP.Examples.Job.NOVICE'],
 			'FirstJob::SWORDMAN'  => [FirstJob::SWORDMAN(), 'PHP.Examples.FirstJob.SWORDMAN'],
 			'FirstJob::MAGE'  => [FirstJob::MAGE(), 'PHP.Examples.FirstJob.MAGE'],
@@ -110,6 +103,13 @@ abstract class DataProviderTestCase extends TestCase
 			'Planet::SATURN'  => [Planet::SATURN(), 'PHP.Examples.Planet.SATURN'],
 			'Planet::URANUS'  => [Planet::URANUS(), 'PHP.Examples.Planet.URANUS'],
 			'Planet::NEPTUNE'  => [Planet::NEPTUNE(), 'PHP.Examples.Planet.NEPTUNE'],
+			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY(), 'PHP.Examples.DayOfTheWeek.SUNDAY'],
+			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY(), 'PHP.Examples.DayOfTheWeek.MONDAY'],
+			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY(), 'PHP.Examples.DayOfTheWeek.TUESDAY'],
+			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::WEDNESDAY(), 'PHP.Examples.DayOfTheWeek.WEDNESDAY'],
+			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::THURSDAY(), 'PHP.Examples.DayOfTheWeek.THURSDAY'],
+			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::FRIDAY(), 'PHP.Examples.DayOfTheWeek.FRIDAY'],
+			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::SATURDAY(), 'PHP.Examples.DayOfTheWeek.SATURDAY'],
 			'Color::RED'  => [Color::RED(), 'PHP.Examples.Color.RED'],
 			'Color::BLUE' => [Color::BLUE(), 'PHP.Examples.Color.BLUE'],
 			'ExtendedColor::GREEN' => [ExtendedColor::GREEN(), 'PHP.Examples.ExtendedColor.GREEN'],
@@ -119,13 +119,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumValuesAndName (): array
 	{
 		return [
-			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY(), 'SUNDAY'],
-			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY(), 'MONDAY'],
-			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY(), 'TUESDAY'],
-			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::WEDNESDAY(), 'WEDNESDAY'],
-			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::THURSDAY(), 'THURSDAY'],
-			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::FRIDAY(), 'FRIDAY'],
-			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::SATURDAY(), 'SATURDAY'],
 			'Job::NOVICE'  => [Job::NOVICE(), 'NOVICE'],
 			'FirstJob::SWORDMAN'  => [FirstJob::SWORDMAN(), 'SWORDMAN'],
 			'FirstJob::MAGE'  => [FirstJob::MAGE(), 'MAGE'],
@@ -154,6 +147,13 @@ abstract class DataProviderTestCase extends TestCase
 			'Planet::SATURN'  => [Planet::SATURN(), 'SATURN'],
 			'Planet::URANUS'  => [Planet::URANUS(), 'URANUS'],
 			'Planet::NEPTUNE'  => [Planet::NEPTUNE(), 'NEPTUNE'],
+			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY(), 'SUNDAY'],
+			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY(), 'MONDAY'],
+			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY(), 'TUESDAY'],
+			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::WEDNESDAY(), 'WEDNESDAY'],
+			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::THURSDAY(), 'THURSDAY'],
+			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::FRIDAY(), 'FRIDAY'],
+			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::SATURDAY(), 'SATURDAY'],
 			'Color::RED'  => [Color::RED(), 'RED'],
 			'Color::BLUE' => [Color::BLUE(), 'BLUE'],
 			'ExtendedColor::GREEN' => [ExtendedColor::GREEN(), 'GREEN'],
@@ -163,13 +163,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumClassesAndName (): array
 	{
 		return [
-			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::class, 'SUNDAY'],
-			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::class, 'MONDAY'],
-			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::class, 'TUESDAY'],
-			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::class, 'WEDNESDAY'],
-			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::class, 'THURSDAY'],
-			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::class, 'FRIDAY'],
-			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::class, 'SATURDAY'],
 			'Job::NOVICE'  => [Job::class, 'NOVICE'],
 			'FirstJob::NOVICE'  => [FirstJob::class, 'NOVICE'],
 			'FirstJob::SWORDMAN'  => [FirstJob::class, 'SWORDMAN'],
@@ -206,6 +199,13 @@ abstract class DataProviderTestCase extends TestCase
 			'Planet::SATURN'  => [Planet::class, 'SATURN'],
 			'Planet::URANUS'  => [Planet::class, 'URANUS'],
 			'Planet::NEPTUNE'  => [Planet::class, 'NEPTUNE'],
+			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::class, 'SUNDAY'],
+			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::class, 'MONDAY'],
+			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::class, 'TUESDAY'],
+			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::class, 'WEDNESDAY'],
+			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::class, 'THURSDAY'],
+			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::class, 'FRIDAY'],
+			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::class, 'SATURDAY'],
 			'Color::RED'  => [Color::class, 'RED'],
 			'Color::BLUE' => [Color::class, 'BLUE'],
 			'ExtendedColor::RED' => [ExtendedColor::class, 'RED'],
@@ -217,11 +217,11 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumClassesAndValues (): array
 	{
 		return [
-			'DayOfTheWeek'  => [DayOfTheWeek::class, [DayOfTheWeek::SUNDAY(), DayOfTheWeek::MONDAY(), DayOfTheWeek::TUESDAY(), DayOfTheWeek::WEDNESDAY(), DayOfTheWeek::THURSDAY(), DayOfTheWeek::FRIDAY(), DayOfTheWeek::SATURDAY()]],
 			'Job'  => [Job::class, [Job::NOVICE()]],
 			'FirstJob'  => [FirstJob::class, [FirstJob::NOVICE(), FirstJob::SWORDMAN(), FirstJob::MAGE(), FirstJob::MERCHANT(), FirstJob::ACOLYTE(), FirstJob::THIEF(), FirstJob::ARCHER()]],
 			'SecondJob'  => [SecondJob::class, [SecondJob::NOVICE(), SecondJob::SWORDMAN(), SecondJob::MAGE(), SecondJob::MERCHANT(), SecondJob::ACOLYTE(), SecondJob::THIEF(), SecondJob::ARCHER(), SecondJob::KNIGHT(), SecondJob::CRUSADER(), SecondJob::WIZARD(), SecondJob::SAGE(), SecondJob::BLACKSMITH(), SecondJob::ALCHEMIST(), SecondJob::PRIEST(), SecondJob::MONK(), SecondJob::ASSASSIN(), SecondJob::ROGUE(), SecondJob::HUNTER(), SecondJob::BARD(), SecondJob::DANCER()]],
 			'Planet' => [Planet::class, [Planet::MERCURY(), Planet::VENUS(), Planet::EARTH(), Planet::MARS(), Planet::JUPITER(), Planet::SATURN(), Planet::URANUS(), Planet::NEPTUNE()]],
+			'DayOfTheWeek'  => [DayOfTheWeek::class, [DayOfTheWeek::SUNDAY(), DayOfTheWeek::MONDAY(), DayOfTheWeek::TUESDAY(), DayOfTheWeek::WEDNESDAY(), DayOfTheWeek::THURSDAY(), DayOfTheWeek::FRIDAY(), DayOfTheWeek::SATURDAY()]],
 			'Color'  => [Color::class, [Color::RED(), Color::BLUE()]],
 			'ExtendedColor' => [ExtendedColor::class, [ExtendedColor::RED(), ExtendedColor::BLUE(), ExtendedColor::GREEN()]],
 		];
@@ -230,13 +230,6 @@ abstract class DataProviderTestCase extends TestCase
 	public function enumValuesAndClass (): array
 	{
 		return [
-			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY(), DayOfTheWeek::class],
-			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY(), DayOfTheWeek::class],
-			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY(), DayOfTheWeek::class],
-			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::WEDNESDAY(), DayOfTheWeek::class],
-			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::THURSDAY(), DayOfTheWeek::class],
-			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::FRIDAY(), DayOfTheWeek::class],
-			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::SATURDAY(), DayOfTheWeek::class],
 			'Job::NOVICE'  => [Job::NOVICE(), Job::class],
 			'FirstJob::NOVICE'  => [FirstJob::NOVICE(), Job::class],
 			'FirstJob::SWORDMAN'  => [FirstJob::SWORDMAN(), FirstJob::class],
@@ -273,6 +266,13 @@ abstract class DataProviderTestCase extends TestCase
 			'Planet::SATURN'  => [Planet::SATURN(), Planet::class],
 			'Planet::URANUS'  => [Planet::URANUS(), Planet::class],
 			'Planet::NEPTUNE'  => [Planet::NEPTUNE(), Planet::class],
+			'DayOfTheWeek::SUNDAY'  => [DayOfTheWeek::SUNDAY(), DayOfTheWeek::class],
+			'DayOfTheWeek::MONDAY'  => [DayOfTheWeek::MONDAY(), DayOfTheWeek::class],
+			'DayOfTheWeek::TUESDAY'  => [DayOfTheWeek::TUESDAY(), DayOfTheWeek::class],
+			'DayOfTheWeek::WEDNESDAY'  => [DayOfTheWeek::WEDNESDAY(), DayOfTheWeek::class],
+			'DayOfTheWeek::THURSDAY'  => [DayOfTheWeek::THURSDAY(), DayOfTheWeek::class],
+			'DayOfTheWeek::FRIDAY'  => [DayOfTheWeek::FRIDAY(), DayOfTheWeek::class],
+			'DayOfTheWeek::SATURDAY'  => [DayOfTheWeek::SATURDAY(), DayOfTheWeek::class],
 			'Color::RED()'  => [Color::RED(), Color::class],
 			'Color::BLUE()' => [Color::BLUE(), Color::class],
 			'ExtendedColor::RED()' => [ExtendedColor::RED(), Color::class],

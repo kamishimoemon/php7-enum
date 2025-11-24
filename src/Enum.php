@@ -61,13 +61,6 @@ abstract class Enum implements Enumeration
 	private string $name;
 	private int $ordinal;
 
-	private function __construct (string $id, string $name, int $ordinal)
-	{
-		$this->id = $id;
-		$this->name = $name;
-		$this->ordinal = $ordinal;
-	}
-
 	public final function id (): string
 	{
 		return $this->id;

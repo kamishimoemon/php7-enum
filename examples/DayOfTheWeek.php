@@ -4,15 +4,80 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\ConstEnum;
+use PHP\CustomEnum;
 
-final class DayOfTheWeek extends ConstEnum
+abstract class DayOfTheWeek extends CustomEnum
 {
-	public const SUNDAY = 1;
-	public const MONDAY = 2;
-	public const TUESDAY = 3;
-	public const WEDNESDAY = 4;
-	public const THURSDAY = 5;
-	public const FRIDAY = 6;
-	public const SATURDAY = 7;
+	protected static final function SUNDAY (): self
+	{
+		return new class extends DayOfTheWeek {
+			public function tellItLikeItIs (): string {
+				return 'Weekends are best.';
+			}
+		};
+	}
+
+	protected static final function MONDAY (): self
+	{
+		return new class extends DayOfTheWeek {
+			public function tellItLikeItIs (): string {
+				return 'Mondays are bad.';
+			}
+		};
+	}
+
+	protected static final function TUESDAY (): self
+	{
+		return new class extends DayOfTheWeek {
+			public function tellItLikeItIs (): string {
+				return 'Midweek days are so-so.';
+			}
+		};
+	}
+
+	protected static final function WEDNESDAY (): self
+	{
+		return new class extends DayOfTheWeek {
+			public function tellItLikeItIs (): string {
+				return 'Midweek days are so-so.';
+			}
+		};
+	}
+
+	protected static final function THURSDAY (): self
+	{
+		return new class extends DayOfTheWeek {
+			public function tellItLikeItIs (): string {
+				return 'Midweek days are so-so.';
+			}
+		};
+	}
+
+	protected static final function FRIDAY (): self
+	{
+		return new class extends DayOfTheWeek {
+			public function tellItLikeItIs (): string {
+				return 'Fridays are better.';
+			}
+		};
+	}
+
+	protected static final function SATURDAY (): self
+	{
+		return new class extends DayOfTheWeek {
+			public function tellItLikeItIs (): string {
+				return 'Weekends are best.';
+			}
+		};
+	}
+
+	public abstract function tellItLikeItIs (): string;
+
+	public static final function main (): void
+	{
+		foreach (self::values() as $dayOfTheWeek)
+		{
+			echo "{$dayOfTheWeek}, please tell us like it is: {$dayOfTheWeek->tellItLikeItIs()}" . PHP_EOL;
+		}
+	}
 }
