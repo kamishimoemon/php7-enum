@@ -6,6 +6,9 @@ namespace PHP\Examples;
 
 use PHP\CustomEnum;
 
+/**
+ * Example of an enum with custom properties and custom (abstract) methods.
+ */
 abstract class Color extends CustomEnum
 {
 	protected static final function RED (): self

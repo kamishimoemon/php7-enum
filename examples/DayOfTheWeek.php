@@ -6,6 +6,14 @@ namespace PHP\Examples;
 
 use PHP\CustomEnum;
 
+/**
+ * Example of an enum with custom (abstract) methods.
+ * It must extends PHP\CustomEnum.
+ * CustomEnum classes define their instances in 2 ways:
+ * - As a private static method whose return type is self or the same class
+ * - As a protected static final method whose return type is self or the same class
+ * In both cases, the method's name becomes the instance's name.
+ */
 abstract class DayOfTheWeek extends CustomEnum
 {
 	protected static final function SUNDAY (): self

@@ -6,6 +6,14 @@ namespace PHP\Examples;
 
 use PHP\CustomEnum;
 
+/**
+ * Example of an enum with custom properties.
+ * It must extends PHP\CustomEnum.
+ * CustomEnum classes define their instances in 2 ways:
+ * - As a private static method whose return type is self or the same class
+ * - As a protected static final method whose return type is self or the same class
+ * In both cases, the method's name becomes the instance's name.
+ */
 final class Planet extends CustomEnum
 {
 	public const G = 6.67300E-11;

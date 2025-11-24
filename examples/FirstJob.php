@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
+/**
+ * Example of subclassing a ConstEnum's enum.
+ * Parent's instances cannot be overriden.
+ */
 class FirstJob extends Job
 {
 	const SWORDMAN = 1;
