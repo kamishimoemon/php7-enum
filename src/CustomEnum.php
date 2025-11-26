@@ -20,6 +20,14 @@ abstract class CustomEnum extends Enum
 		return $instance;
 	}
 
+	private static function isEnumInstanceAsMethod (ReflectionClass $class, ReflectionMethod $method): bool
+	{
+		return $method->getDeclaringClass() == $class
+			&& (($method->isPrivate() && $method->isStatic()) || ($method->isProtected() && $method->isStatic() && $method->isFinal()))
+			&& ($method->hasReturnType() && ($method->getReturnType() == 'self' || $method->getReturnType() == $class->getName()))
+		;
+	}
+
 	private static function initClass (ReflectionClass $class, int $ordinality): void
 	{
 		if (!isset(self::$instances[$class->getName()]))
@@ -27,7 +35,7 @@ abstract class CustomEnum extends Enum
 			self::$instances[$class->getName()] = [];
 			foreach ($class->getMethods() as $method)
 			{
-				if ($method->getDeclaringClass() == $class && $method->isProtected() && $method->isStatic() && $method->isFinal() && $method->hasReturnType() && ($method->getReturnType() == 'self' || $method->getReturnType() == $class->getName()))
+				if (self::isEnumInstanceAsMethod($class, $method))
 				{
 					$instance = self::newInstance($class, $method, $ordinality);
 					self::$instances[$class->getName()][$instance->name()] = $instance;

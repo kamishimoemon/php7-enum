@@ -18,22 +18,22 @@ final class Planet extends CustomEnum
 {
 	public const G = 6.67300E-11;
 
-	protected static final function MERCURY (): Planet
+	private static function MERCURY (): self
 	{
 		return new self(3.303e+23, 2.4397e6);
 	}
 
-	protected static final function VENUS (): Planet
+	private static final function VENUS (): self
 	{
 		return new self(4.869e+24, 6.0518e6);
 	}
 
-	protected static final function EARTH (): Planet
+	private static function EARTH (): Planet
 	{
 		return new self(5.976e+24, 6.37814e6);
 	}
 
-	protected static final function MARS (): Planet
+	protected static final function MARS (): self
 	{
 		return new self(6.421e+23, 3.3972e6);
 	}

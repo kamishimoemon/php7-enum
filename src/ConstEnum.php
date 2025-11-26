@@ -19,6 +19,11 @@ abstract class ConstEnum extends Enum
 		return $instance;
 	}
 
+	private static function isEnumInstanceAsConstant (ReflectionClass $class, ReflectionClassConstant $const): bool
+	{
+		return $const->getDeclaringClass() == $class;
+	}
+
 	private static function initClass (ReflectionClass $class, int $ordinality): void
 	{
 		if (!isset(self::$instances[$class->getName()]))
@@ -26,7 +31,7 @@ abstract class ConstEnum extends Enum
 			self::$instances[$class->getName()] = [];
 			foreach ($class->getReflectionConstants() as $const)
 			{
-				if ($const->getDeclaringClass() == $class)
+				if (self::isEnumInstanceAsConstant($class, $const))
 				{
 					$instance = self::newInstance($class, $const, $ordinality);
 					self::$instances[$class->getName()][$instance->name()] = $instance;
