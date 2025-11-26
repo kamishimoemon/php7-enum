@@ -1,5 +1,2 @@
-# PHP vendor directory
+# Composer vendor directory
 /vendor/
-
-# Composer files
-composer.lock
