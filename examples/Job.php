@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\ConstEnum;
+use PHP\Enum;
 
 /**
  * Example of a simple enum with its instances defined as constansts.
@@ -17,7 +17,7 @@ use PHP\ConstEnum;
  * 
  * Jobs tree from Ragnarok Online.
  */
-class Job extends ConstEnum
+class Job extends Enum
 {
 	const NOVICE = 0;
 }

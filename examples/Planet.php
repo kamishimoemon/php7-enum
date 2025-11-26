@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\CustomEnum;
+use PHP\Enum;
 
 /**
  * Example of an enum with custom properties.
@@ -14,7 +14,7 @@ use PHP\CustomEnum;
  * - As a protected static final method whose return type is self or the same class
  * In both cases, the method's name becomes the instance's name.
  */
-final class Planet extends CustomEnum
+final class Planet extends Enum
 {
 	public const G = 6.67300E-11;
 

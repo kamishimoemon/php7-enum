@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PHP\Examples;
 
-use PHP\CustomEnum;
+use PHP\Enum;
 
 /**
  * Example of an enum with custom properties and custom (abstract) methods.
  */
-abstract class Color extends CustomEnum
+abstract class Color extends Enum
 {
 	protected static final function RED (): self
 	{
