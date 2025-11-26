@@ -1,5 +1,7 @@
 # 🔥 php7-enum
 
+[![CI](https://github.com/kamishimoemon/php7-enum/actions/workflows/ci.yml/badge.svg)](https://github.com/kamishimoemon/php7-enum/actions/workflows/ci.yml)
+
 **php7-enum** is a pure PHP 7.4 implementation of Java-style enums — supporting unique instances, custom methods, data binding, and extensibility — all without native enum support.
 
 This library explores two implementation strategies:
