@@ -1,0 +1,19 @@
+parameters:
+    level: 2
+
+    paths:
+        - src
+        - examples
+    #    - test
+
+    bootstrapFiles:
+        - src/enumval.php
+
+    #checkMissingIterableValueType: true
+    checkUninitializedProperties: true
+    reportUnmatchedIgnoredErrors: true
+
+    #ignoreErrors:
+    #    # Ignorar "clase no encontrada" en traits o interfaces que se definen más tarde
+    #    - '#Call to static method valueOf\(\) on an unknown class#'
+    #    - '#Call to method .* on an unknown class#'

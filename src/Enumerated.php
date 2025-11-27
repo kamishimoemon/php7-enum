@@ -9,7 +9,7 @@ use ReflectionClassConstant;
 use ReflectionMethod;
 use InvalidArgumentException;
 
-trait Enumerable
+trait Enumerated
 {
 	private static array $instances = [];
 

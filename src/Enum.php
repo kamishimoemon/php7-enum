@@ -6,5 +6,5 @@ namespace PHP;
 
 abstract class Enum implements Enumeration
 {
-	use Enumerable;
+	use Enumerated;
 }
