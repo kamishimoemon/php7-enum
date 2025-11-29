@@ -3,6 +3,7 @@
 [![php](https://img.shields.io/badge/PHP-7.4-777BB4.svg?logo=php)](http://php.net)
 [![CI](https://github.com/kamishimoemon/php7-enum/actions/workflows/ci.yml/badge.svg)](https://github.com/kamishimoemon/php7-enum/actions/workflows/ci.yml)
 [![Latest Stable Version](https://poser.pugx.org/kamishimoemon/php7-enum/version.svg)](https://packagist.org/packages/kamishimoemon/php7-enum)
+![GitHub License](https://img.shields.io/github/license/kamishimoemon/php7-enum?label=License&color=750014)
 
 **php7-enum** is a pure PHP 7.4 implementation of Java-style enums — supporting unique instances, custom methods, data binding, and extensibility — all without native enum support.
 
