@@ -1,7 +1,7 @@
 # 🔥 php7-enum
 
 [![php](https://img.shields.io/badge/PHP-7.4-777BB4.svg?logo=php)](http://php.net)
-[![CI](https://github.com/kamishimoemon/php7-enum/actions/workflows/ci.yml/badge.svg)](https://github.com/kamishimoemon/php7-enum/actions/workflows/ci.yml)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kamishimoemon/php7-enum/ci.yml?logo=github&label=CI)
 [![Latest Stable Version](https://poser.pugx.org/kamishimoemon/php7-enum/version.svg)](https://packagist.org/packages/kamishimoemon/php7-enum)
 ![GitHub License](https://img.shields.io/github/license/kamishimoemon/php7-enum?label=License&color=750014)
 
