@@ -1,6 +1,6 @@
 # 🔥 php7-enum
 
-[![php](https://img.shields.io/badge/PHP-7.4-4f5b93.svg)](http://php.net)
+[![php](https://img.shields.io/badge/PHP-7.4-777BB4.svg?logo=php)](http://php.net)
 [![CI](https://github.com/kamishimoemon/php7-enum/actions/workflows/ci.yml/badge.svg)](https://github.com/kamishimoemon/php7-enum/actions/workflows/ci.yml)
 [![Latest Stable Version](https://poser.pugx.org/kamishimoemon/php7-enum/version.svg)](https://packagist.org/packages/kamishimoemon/php7-enum)
 
