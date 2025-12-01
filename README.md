@@ -33,20 +33,6 @@ Both follow a common interface: `Enumeration`.
 
 ---
 
-## 🧱 Structure
-
-```
-src/
-├── Enumeration.php      # Shared interface
-├── EnumFlame.php        # Abstract base class implementation
-├── EnumSpirit.php       # Trait-based implementation
-examples/
-tests/
-README.md
-```
-
----
-
 ## 🧪 Philosophy
 
 This library prioritizes:
